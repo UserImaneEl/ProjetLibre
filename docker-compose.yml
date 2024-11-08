@@ -1,13 +1,13 @@
 services:
   discovery-service:
-     build: ./discovery-service
+     build: ProjetLibreBack/discovery-service
      container_name: discovery-service-container
      ports:
        - '8761:8761'
      expose:
        - '8761'
   gateway-service:
-    build: ./gateway-service
+    build: ProjetLibreBack/gateway-service
     container_name: gateway-service-container
     ports:
       - '8888:8888'
@@ -25,7 +25,7 @@ services:
       - "5432:5432"
 
   labo-service:
-    build: ./labo-service
+    build: ProjetLibreBack/labo-service
     container_name: labo-service-container
     ports:
       - '8082:8082'
