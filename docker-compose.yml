@@ -36,7 +36,7 @@ services:
       - discovery-service
   frontend:
     build:
-      context: .ProjetLibreFront/projetfront
+      context: ./ProjetLibreFront/projetfront
     container_name: frontend-app
     ports:
       - "4200:4200"
