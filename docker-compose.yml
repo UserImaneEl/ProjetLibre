@@ -18,7 +18,7 @@ services:
   database:
     image: postgres:latest
     environment:
-      POSTGRES_DB: labo-service
+      POSTGRES_DB: labo_service_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
     ports:
