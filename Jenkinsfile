@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Récupérer les sources du dépôt GitHub
-                git branch: 'master', url: 'https://github.com/UserImaneEl/ProjetLabo.git'
+                git branch: 'master', url: 'https://github.com/UserImaneEl/ProjetLibre.git'
             }
         }
 
