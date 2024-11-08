@@ -23,7 +23,7 @@ WORKDIR /app
 # Copie les fichiers construits depuis l'étape de construction
 # Modifie si index.html reste dans /src, sinon il devrait être dans dist/<project>
 
-COPY --from=builder /app/dist/project-labo-front/browser /app
+COPY --from=builder /app/dist/projetfront/browser /app
 
 # Installe http-server pour servir les fichiers statiques
 RUN npm install -g http-server
