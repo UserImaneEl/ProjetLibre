@@ -31,7 +31,7 @@ pipeline {
         // Build Frontend (Angular)
         stage('Build Frontend') {
             steps {
-                dir('./project-labo-front') {
+                dir('./ProjetLibre/projetfront') {
                     // Installer les dépendances npm
                     bat 'npm install'
 
