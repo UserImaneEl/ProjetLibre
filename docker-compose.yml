@@ -34,3 +34,11 @@ services:
     depends_on:
       - database
       - discovery-service
+  frontend:
+    build:
+      context: .ProjetLibreFront/projetfront
+    container_name: frontend-app
+    ports:
+      - "4200:4200"
+    depends_on:
+      - gateway-service
