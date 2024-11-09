@@ -34,6 +34,62 @@ services:
     depends_on:
       - database
       - discovery-service
+
+  database-analyse:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: analyse_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+  analyse-service:
+    build: ProjetLibreBack/analyse-service
+    container_name: analyse-service-container
+    ports:
+      - '8083:8083'
+    expose:
+      - '8083'
+    depends_on:
+      - database-analyse
+      - discovery-service
+  database-contactLabo:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: contactLabo_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+  contactLabo-service:
+    build: ProjetLibreBack/contactLabo-service
+    container_name: contactLabo-service-container
+    ports:
+      - '8084:8084'
+    expose:
+      - '8084'
+    depends_on:
+      - database-contactLabo
+      - discovery-service
+  database-adresse:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: adresse_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+  adresse-service:
+    build: ProjetLibreBack/adresse-service
+    container_name: adresse-service-container
+    ports:
+      - '8089:8089'
+    expose:
+      - '8089'
+    depends_on:
+      - database-adresse
+      - discovery-service
+
   frontend:
     build:
       context: ./ProjetLibreFront/projetfront
