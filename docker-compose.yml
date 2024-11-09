@@ -91,7 +91,114 @@ services:
     depends_on:
       - database-adresse
       - discovery-service
-
+  database-dossier:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: dossier_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  dossier-service:
+    build: ProjetLibreBack/dossier-service
+    container_name: dossier-service-container
+    ports:
+      - '8087:8087'
+    expose:
+      - '8087'
+    depends_on:
+      - database-dossier
+      - discovery-service
+  database-epreuve:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: epreuve_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  epreuve-service:
+    build: ProjetLibreBack/epreuve-service
+    container_name: epreuve-service-container
+    ports:
+      - '8085:8085'
+    expose:
+      - '8085'
+    depends_on:
+      - database-epreuve
+      - discovery-service
+  database-examen:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: examen_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  examen-service:
+    build: ProjetLibreBack/examen-service
+    container_name: examen-service-container
+    ports:
+      - '8088:8088'
+    expose:
+      - '8088'
+    depends_on:
+      - database-examen
+      - discovery-service
+  database-patient:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: patient_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  patient-service:
+    build: ProjetLibreBack/patient-service
+    container_name: patient-service-container
+    ports:
+      - '8086:8086'
+    expose:
+      - '8086'
+    depends_on:
+      - database-patient
+      - discovery-service
+  database-testanalyse:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: testanalyse_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  testanalyse-service:
+    build: ProjetLibreBack/testAnalyse-service
+    container_name: testanalyse-service-container
+    ports:
+      - '8091:8091'
+    expose:
+      - '8091'
+    depends_on:
+      - database-testanalyse
+      - discovery-service
+  database-utilisateur:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: utilisateur_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5435:5432"
+  utilisateur-service:
+    build: ProjetLibreBack/utilisateur-service
+    container_name: utilisateur-service-container
+    ports:
+      - '8090:8090'
+    expose:
+      - '8090'
+    depends_on:
+      - database-utilisateur
+      - discovery-service
   frontend:
     build:
       context: ./ProjetLibreFront/projetfront
