@@ -1,11 +1,11 @@
 services:
   discovery-service:
-     build: ProjetLibreBack/discovery-service
-     container_name: discovery-service-container
-     ports:
-       - '8761:8761'
-     expose:
-       - '8761'
+    build: ProjetLibreBack/discovery-service
+    container_name: discovery-service-container
+    ports:
+      - '8761:8761'
+    expose:
+      - '8761'
   gateway-service:
     build: ProjetLibreBack/gateway-service
     container_name: gateway-service-container
@@ -42,7 +42,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
     ports:
-      - "5432:5432"
+      - "5433:5432"
   analyse-service:
     build: ProjetLibreBack/analyse-service
     container_name: analyse-service-container
@@ -53,15 +53,16 @@ services:
     depends_on:
       - database-analyse
       - discovery-service
-  database-contactLabo:
+
+  database-contactlabo:
     image: postgres:latest
     environment:
-      POSTGRES_DB: contactLabo_service_db
+      POSTGRES_DB: contactlabo_service_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
     ports:
-      - "5432:5432"
-  contactLabo-service:
+      - "5434:5432"
+  contactlabo-service:
     build: ProjetLibreBack/contactLabo-service
     container_name: contactlabo-service-container
     ports:
@@ -69,8 +70,9 @@ services:
     expose:
       - '8084'
     depends_on:
-      - database-contactLabo
+      - database-contactlabo
       - discovery-service
+
   database-adresse:
     image: postgres:latest
     environment:
@@ -78,7 +80,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
     ports:
-      - "5432:5432"
+      - "5435:5432"
   adresse-service:
     build: ProjetLibreBack/adresse-service
     container_name: adresse-service-container
