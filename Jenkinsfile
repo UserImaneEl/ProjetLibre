@@ -21,6 +21,18 @@ pipeline {
                     // Construction du service labo sans tests
                     bat 'mvn clean install -DskipTests'
                 }
+                dir('./ProjetLibreBack/analyse-service') {
+                                    // Construction du service labo sans tests
+                                    bat 'mvn clean install -DskipTests'
+                                }
+                dir('./ProjetLibreBack/contactLabo-service') {
+                                    // Construction du service labo sans tests
+                                    bat 'mvn clean install -DskipTests'
+                                }
+                dir('./ProjetLibreBack/adresse-service') {
+                                    // Construction du service labo sans tests
+                                    bat 'mvn clean install -DskipTests'
+                                }
                 dir('./ProjetLibreBack/gateway-service') {
                     // Construction du service gateway sans tests
                     bat 'mvn clean install -DskipTests'
