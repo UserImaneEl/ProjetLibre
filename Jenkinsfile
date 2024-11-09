@@ -5,36 +5,48 @@ pipeline {
         // Checkout stage
         stage('Checkout') {
             steps {
-                // Récupérer les sources du dépôt GitHub
+                // Retrieve sources from GitHub repository
                 git branch: 'master', url: 'https://github.com/UserImaneEl/ProjetLibre.git'
             }
         }
 
-        // Build Backend (discovery-service, labo-service, gateway-service)
+        // Build Backend (all backend services)
         stage('Build Backend') {
             steps {
                 dir('./ProjetLibreBack/discovery-service') {
-                    // Construction du service discovery sans tests
                     bat 'mvn clean install -DskipTests'
                 }
                 dir('./ProjetLibreBack/labo-service') {
-                    // Construction du service labo sans tests
                     bat 'mvn clean install -DskipTests'
                 }
                 dir('./ProjetLibreBack/analyse-service') {
-                                    // Construction du service labo sans tests
-                                    bat 'mvn clean install -DskipTests'
-                                }
+                    bat 'mvn clean install -DskipTests'
+                }
                 dir('./ProjetLibreBack/contactLabo-service') {
-                                    // Construction du service labo sans tests
-                                    bat 'mvn clean install -DskipTests'
-                                }
+                    bat 'mvn clean install -DskipTests'
+                }
                 dir('./ProjetLibreBack/adresse-service') {
-                                    // Construction du service labo sans tests
-                                    bat 'mvn clean install -DskipTests'
-                                }
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/dossier-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/epreuve-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/examen-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/patient-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/testAnalyse-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
+                dir('./ProjetLibreBack/utilisateur-service') {
+                    bat 'mvn clean install -DskipTests'
+                }
                 dir('./ProjetLibreBack/gateway-service') {
-                    // Construction du service gateway sans tests
                     bat 'mvn clean install -DskipTests'
                 }
             }
@@ -44,10 +56,7 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('./ProjetLibreFront/projetfront') {
-                    // Installer les dépendances npm
                     bat 'npm install'
-
-                    // Construire l'application Angular en mode production
                     bat 'npm run build --prod'
                 }
             }
@@ -56,20 +65,17 @@ pipeline {
         // Deploy with Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
-                // Lancer les services avec Docker Compose
                 bat 'docker-compose -f docker-compose.yml up --build -d'
             }
         }
     }
 
     post {
-        // Si le pipeline réussit
         success {
-            echo 'Le build et le déploiement ont réussi !'
+            echo 'The build and deployment were successful!'
         }
-        // Si le pipeline échoue
         failure {
-            echo 'Échec du build ou du déploiement.'
+            echo 'Build or deployment failed.'
         }
     }
 }
