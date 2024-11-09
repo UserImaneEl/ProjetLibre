@@ -4,5 +4,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(name = "TESTANALYSE-SERVICE")
 
-public class TestAnalyseClient {
+public interface TestAnalyseClient {
 }

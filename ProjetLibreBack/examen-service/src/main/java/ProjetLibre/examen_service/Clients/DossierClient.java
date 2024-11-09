@@ -4,5 +4,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(name = "DOSSIER-SERVICE")
 
-public class DossierClient {
+public interface DossierClient {
 }

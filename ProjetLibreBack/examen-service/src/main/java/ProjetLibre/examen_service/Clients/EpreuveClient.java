@@ -4,5 +4,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(name = "EPREUVE-SERVICE")
 
-public class EpreuveClient {
+public interface EpreuveClient {
 }
