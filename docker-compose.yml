@@ -63,7 +63,7 @@ services:
       - "5432:5432"
   contactLabo-service:
     build: ProjetLibreBack/contactLabo-service
-    container_name: contactLabo-service-container
+    container_name: contactlabo-service-container
     ports:
       - '8084:8084'
     expose:
