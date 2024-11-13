@@ -16,7 +16,7 @@ export class LaboratoireService {
   }
   listLabos(): Observable<Laboratoire[]> {
     return this.http.get<Laboratoire[]>(
-      'http://localhost:8082/api/labos/labos'
+      'http://localhost:8888/LABO-SERVICE/api/labos/labos'
     );
   }
 }

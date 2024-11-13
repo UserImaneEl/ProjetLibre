@@ -7,6 +7,7 @@ import ProjetLibre.labo_service.Repositories.LaboratoireRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,15 @@ public class LaboratoireService {
                 .map(r -> laboMapper.fromLaboToDto(r))
                 .collect(Collectors.toList());
        return listDtos;
+    }
+    public void update(LaboDto dto,Long id){
+        Laboratoire l=laboratoireRepo.findById(id).get();
+        l.setNom(dto.getNom());
+        l.setLogo(dto.getLogo());
+        l.setNrc(dto.getNrc());
+        l.setActive(dto.isActive());
+        l.setDateActivation(LocalDate.parse(dto.getDateActivation()));
+        laboratoireRepo.save(l);
     }
 
 

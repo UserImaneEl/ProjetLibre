@@ -23,7 +23,7 @@ public class Controller {
     @PostMapping("/addLabo")
     public ResponseEntity<String> addLabo(@RequestBody LaboDto laboDto) {
         try {
-            System.out.println("hnaaaaa");
+
             laboratoireService.saveLabo(laboDto);
 
             return new ResponseEntity<>("Laboratoire ajouté avec succès", HttpStatus.CREATED);
@@ -32,7 +32,10 @@ public class Controller {
             return new ResponseEntity<>("Erreur lors de l'ajout du laboratoire: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+  @PutMapping("/updateLabo/{id}")
+  public void update(@PathVariable(name="id")Long id,@RequestBody LaboDto laboDto){
+      laboratoireService.update(laboDto,id);
+  }
 
     @GetMapping("/labos")
     public ResponseEntity<List<LaboDto>> getLabos() {

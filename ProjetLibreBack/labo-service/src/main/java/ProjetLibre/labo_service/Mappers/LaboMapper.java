@@ -11,13 +11,14 @@ import java.time.format.DateTimeParseException;
 @Component
 public class LaboMapper {
 
-    @Autowired
-    Laboratoire labo;
+    //@Autowired
+    //Laboratoire labo;
 
-    @Autowired
-    LaboDto laboDto;
+    //@Autowired
+    //LaboDto laboDto;
 
     public Laboratoire fromDtoToLabo(LaboDto laboDto){
+        Laboratoire labo=new Laboratoire();
         if (laboDto == null) {
             return null;
         }
@@ -41,6 +42,7 @@ public class LaboMapper {
     }
 
     public LaboDto fromLaboToDto(Laboratoire l) {
+        LaboDto laboDto=new LaboDto();
         if (l == null) {
             return null;
         }

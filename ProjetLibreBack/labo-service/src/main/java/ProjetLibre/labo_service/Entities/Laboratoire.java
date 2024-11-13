@@ -16,9 +16,6 @@ public class Laboratoire {
 
     private Long id; // Identifiant unique du laboratoire
 
-
-
-
     public boolean isActive() {
         return active;
     }
