@@ -1,0 +1,109 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Créer une nouvelle analyse</h2>
+  <form
+    [formGroup]="analyseForm"
+    (ngSubmit)="onSubmit()"
+    class="needs-validation"
+    novalidate
+  >
+    <!-- Nom de l'analyse -->
+    <div class="form-group mb-3">
+      <label for="nom" class="form-label">Nom de l'analyse:</label>
+      <input
+        id="nom"
+        formControlName="nom"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="
+          analyseForm.controls['nom'].invalid &&
+          analyseForm.controls['nom'].touched
+        "
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Type de l'analyse -->
+    <div class="form-group mb-3">
+      <label for="type" class="form-label">Type d'analyse:</label>
+      <input
+        id="type"
+        formControlName="type"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="
+          analyseForm.controls['type'].invalid &&
+          analyseForm.controls['type'].touched
+        "
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mb-3">
+      <label for="description" class="form-label"
+        >Description de l'analyse:</label
+      >
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="3"
+        class="form-control"
+        required
+      ></textarea>
+      <div
+        *ngIf="
+          analyseForm.controls['description'].invalid &&
+          analyseForm.controls['description'].touched
+        "
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Liste des laboratoires -->
+    <div class="form-group mb-3">
+      <label for="laboratoire" class="form-label"
+        >Sélectionner le laboratoire:</label
+      >
+      <select
+        id="laboratoire"
+        formControlName="laboratoire"
+        class="form-select"
+        required
+      >
+        <option *ngFor="let labo of laboratoires">
+          {{ labo.nom }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          analyseForm.controls['laboratoire'].invalid &&
+          analyseForm.controls['laboratoire'].touched
+        "
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="analyseForm.invalid"
+    >
+      Créer
+    </button>
+  </form>
+</div>

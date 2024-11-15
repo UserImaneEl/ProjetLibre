@@ -1,0 +1,90 @@
+/* Arrière-plan dégradé */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #007bff, #b3d4fc);
+}
+
+.login-wrapper {
+  background-color: #fff;
+  padding: 50px 40px; /* Augmentation du padding pour plus d'espace interne */
+  max-width: 600px; /* Augmente la largeur maximale du formulaire */
+  width: 26%;
+  height: 56%; /* Assurez-vous qu'il est réactif et s'ajuste à la taille de l'écran */
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* En-tête de la carte de connexion */
+.login-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 40px;
+  margin-left: -10px;
+}
+
+.login-header p {
+  color: #6c757d;
+  font-size: 16px;
+
+  margin-bottom: 30px;
+}
+
+/* Champs de formulaire */
+.form-group {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: #6c757d;
+  font-size: 18px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Bouton de connexion */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 8px 15px rgba(0, 91, 179, 0.3);
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}

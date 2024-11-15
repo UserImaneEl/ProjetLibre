@@ -1,31 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Laboratoire } from '../../models/laboratoire.model';
 import { LaboratoireService } from '../../Services/Laboratory-service';
+import { Laboratoire } from '../../models/laboratoire.model';
 
 @Component({
   selector: 'app-labos-list',
   templateUrl: './labos-list.component.html',
   styleUrls: ['./labos-list.component.css'],
+  standalone: false,
 })
 export class LabosListComponent implements OnInit {
   labos: Laboratoire[] = [];
+  loading: boolean = true;
+  error: string = '';
+  laboId: number | undefined;
 
-  constructor(private laboratoireService: LaboratoireService) {}
+  constructor(private laboService: LaboratoireService) {}
 
   ngOnInit(): void {
-    this.fetchLaboratoires();
-  }
-
-  fetchLaboratoires(): void {
-    this.laboratoireService.listLabos().subscribe({
-      next: (response) => {
-        this.labos = response;
+    this.laboService.listLabos().subscribe({
+      next: (data) => {
+        this.labos = data;
+        this.loading = false;
       },
-      error: (error) => {
-        console.error(
-          'Erreur lors de la récuperation des laboratoires:',
-          error.message || error
-        );
+      error: (err) => {
+        this.error = 'Erreur lors du chargement des laboratoires';
+        this.loading = false;
       },
     });
   }

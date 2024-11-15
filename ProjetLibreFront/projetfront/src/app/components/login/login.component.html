@@ -1,0 +1,45 @@
+<div style="background-color: #d1ecff">
+  <section
+    class="background-section"
+    style="
+      background-image: url('assets/images/tbib.jpg');
+      background-size: 100% auto;
+      background-position-x: 4%;
+      position: relative;
+      transition: background-color 0.3s ease;
+    "
+  >
+    <div class="blur-overlay"></div>
+    <div class="form-box">
+      <div class="form-value">
+        <form [formGroup]="formLogin" (ngSubmit)="handleLogin()">
+          <h2 style="font-family: Poppins">Login</h2>
+          <div class="inputbox">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="email"
+              id="username"
+              class="form-control"
+              formControlName="username"
+              required
+            />
+          </div>
+          <div class="inputbox">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              required
+            />
+          </div>
+          <button style="margin-top: 13px">Log In</button>
+          <div class="register">
+            <p>Don't have an account? <a href="#">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

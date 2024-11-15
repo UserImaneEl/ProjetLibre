@@ -1,16 +1,21 @@
-<div class="container mt-5">
-  <h2 style="margin-left: 37%; margin-bottom: 4%">Liste des Laboratoires</h2>
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let labo of labos">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">{{ labo.nom }}</h5>
-          <p class="card-text">{{ labo.logo }}</p>
-          <button class="btn btn-outline-primary btn-sm mt-2">
-            En savoir plus
-          </button>
-        </div>
-      </div>
+<div *ngIf="loading">Chargement des laboratoires...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div><h2 class="labs-title">Liste des Laboratoires</h2></div>
+
+<div class="labo-container" *ngIf="!loading && !error">
+  <div class="labo-card" *ngFor="let labo of labos">
+    <div class="labo-logo">
+      <img src="assets/logo-labo.png" alt="Logo" class="logo-img" />
+    </div>
+    <div class="labo-info">
+      <h3 class="labo-name">{{ labo.nom }}</h3>
+      <p class="labo-nrc">{{ labo.nrc }}</p>
+    </div>
+    <div>
+      <a type="button" class="btn btn-primary" [routerLink]="['/edit-labo', 1]"
+        >Modifier</a
+      >
     </div>
   </div>
 </div>

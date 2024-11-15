@@ -1,17 +1,91 @@
-/* Styles personnalisés pour les cards */
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* Conteneur des laboratoires */
+.labo-container {
+  margin-left: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px 20px 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 50px;
+  justify-items: center;
+  align-items: flex-start;
 }
 
-.card-title {
-  font-size: 1.25rem;
+/* Titre des laboratoires */
+.labs-title {
+  font-size: 2em;
   font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  color: #333;
+  position: relative;
+  text-align: center;
 }
 
-.card-text {
-  font-size: 1rem;
+/* Carte de chaque laboratoire */
+.labo-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: 100%; /* S'assurer que les cartes prennent toute la largeur disponible */
 }
-.btn-outline-primary {
-  border-radius: 20px;
+
+.labo-card:hover {
+  transform: translateY(-5px); /* Légère élévation au survol */
+}
+
+/* Logo du laboratoire */
+.labo-logo {
+  margin-right: 20px;
+}
+
+.logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Informations du laboratoire */
+.labo-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labo-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.labo-nrc {
+  font-size: 1em;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+  .labo-card {
+    padding: 20px;
+  }
+
+  .logo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .labo-name {
+    font-size: 1.2em;
+  }
+
+  .labo-nrc {
+    font-size: 0.9em;
+  }
 }

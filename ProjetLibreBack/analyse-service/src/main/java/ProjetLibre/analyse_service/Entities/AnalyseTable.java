@@ -25,6 +25,7 @@ public class AnalyseTable {
 
     private String nom;
     private String description;
+    private String type;
 
     // Getters and Setters
     public Long getId() {
@@ -68,4 +69,11 @@ public class AnalyseTable {
         this.labo = labo;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/labos")
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class Controller {
      @Autowired LaboratoireRepo laboratoireRepo;
 
@@ -57,7 +57,10 @@ public class Controller {
 
 
 
-
+    @GetMapping("/getLaboByNom/{nom}")
+    Laboratoire getLaboByNom(@PathVariable(name="nom") String nom){
+        return laboratoireService.getLaboByNom(nom);
+    }
 
 
      @GetMapping("/{id}")
