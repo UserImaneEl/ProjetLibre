@@ -43,4 +43,17 @@ public class ContactLaboController {
         contactLabo.setLaboratoire(labo);
         return contactLabo;
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ContactLabo> updateContact(@PathVariable Long id, @RequestBody ContactLabo updatedContactLabo) {
+        ContactLabo savedContact = contactLaboService.updateContact(id, updatedContactLabo);
+        return ResponseEntity.ok(savedContact);
+    }
+
+    // Method to delete a ContactLabo
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteContact(@PathVariable Long id) {
+        contactLaboService.deleteContact(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
