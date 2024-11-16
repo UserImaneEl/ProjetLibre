@@ -3,8 +3,10 @@ package ProjetLibre.analyse_service.Web;
 import ProjetLibre.analyse_service.Classes.Laboratoire;
 import ProjetLibre.analyse_service.Clients.LaboratoireClient;
 
+import ProjetLibre.analyse_service.Daos.AnalyseDto;
 import ProjetLibre.analyse_service.Entities.AnalyseTable;
 import ProjetLibre.analyse_service.Repositories.AnalyseRepo;
+import ProjetLibre.analyse_service.Services.AnalyseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,17 +40,20 @@ public class Controller {
 
     @Autowired
     private AnalyseRepo analyseRepo;
-    @Autowired
-    LaboratoireClient laboratoireClient;
 
-    @PostMapping("/addLabo")
-    public void addLabo(@RequestBody AnalyseTable analyseTable){
-        analyseRepo.save(analyseTable);
+    LaboratoireClient laboratoireClient;
+    @Autowired
+    AnalyseService analyseService;
+
+    @PostMapping("/addAnalyse")
+    public void addLabo(@RequestBody AnalyseDto dao){
+
+        analyseService.save(dao);
     }
 
     @GetMapping("/listAnalyses")
-    public List<AnalyseTable> listAnalyses(){
-        return analyseRepo.findAll();
+    public List<AnalyseDto> listAnalyses(){
+        return analyseService.findAll();
     }
 
     @GetMapping("/{id}")

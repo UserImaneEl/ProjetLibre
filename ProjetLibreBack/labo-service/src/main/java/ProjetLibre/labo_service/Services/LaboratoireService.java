@@ -36,6 +36,10 @@ public class LaboratoireService {
         l.setDateActivation(LocalDate.parse(dto.getDateActivation()));
         laboratoireRepo.save(l);
     }
+    public Laboratoire getLaboByNom(String nom){
+       return laboratoireRepo.findByNom(nom);
+    }
+
 
 
 }

@@ -28,6 +28,8 @@ public class Utilisateur implements Serializable {
 
 
     private String role;
+    @OneToOne
+    private Compte compte;
 
     // Getters et setters
 
