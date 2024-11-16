@@ -1,0 +1,45 @@
+<div class="container">
+  <h2 class="text-center my-4">Liste des Analyses</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Laboratoire</th>
+        <th>Modifier</th>
+        <th>Supprimer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let analyse of analyses">
+        <td>{{ analyse.nom }}</td>
+        <td>{{ analyse.type }}</td>
+        <td>{{ analyse.description }}</td>
+        <td>{{ analyse.laboratoire || "Non spécifié" }}</td>
+        <td>
+          <button
+            style="margin-left: 10px"
+            class="btn btn-outline-primary btn-sm"
+          >
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button
+            style="margin-left: 13px"
+            class="btn btn-outline-danger btn-sm"
+            (click)="deleteAnalyse()"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="analyses.length === 0" class="text-center">
+    Aucune analyse trouvée.
+  </p>
+</div>

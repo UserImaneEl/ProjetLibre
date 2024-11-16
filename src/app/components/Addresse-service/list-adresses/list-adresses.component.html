@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Liste des Adresses</h2>
+
+  <!-- Liste des adresses -->
+  <div class="row">
+    <div class="col-md-4" *ngFor="let adresse of adresses">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ adresse.nomVoie }} {{ adresse.numVoie }}</h5>
+          <p class="card-text">
+            <strong>Code Postal:</strong> {{ adresse.codePostal }}<br />
+            <strong>Ville:</strong> {{ adresse.ville }}<br />
+            <strong>Commune:</strong> {{ adresse.commune }}
+          </p>
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn btn-warning btn-sm" [routerLink]="['/edit-address', adresse.id]"
+            >
+              Modifier
+            </button>
+            <button
+              class="btn btn-danger btn-sm" (click)="deleteAdresse(adresse.id)"
+            >
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

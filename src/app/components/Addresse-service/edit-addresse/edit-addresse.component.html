@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Modifier l'adresse</h2>
+  <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <!-- Nom de la voie -->
+    <div class="form-group mb-3">
+      <label for="nomVoie" class="form-label">Nom de la voie :</label>
+      <input
+        type="text"
+        id="nomVoie"
+        [(ngModel)]="adresse.nomVoie"
+        name="nomVoie"
+        class="form-control"
+        required
+      />
+      <div *ngIf="!adresse.nomVoie && adresse.nomVoie !== undefined" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Num de la voie -->
+    <div class="form-group mb-3">
+      <label for="nomVoie" class="form-label">Numéro de la voie :</label>
+      <input
+        type="text"
+        id="numVoie"
+        [(ngModel)]="adresse.numVoie"
+        name="numVoie"
+        class="form-control"
+        required
+      />
+      <div *ngIf="!adresse.numVoie && adresse.numVoie !== undefined" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Code postal -->
+    <div class="form-group mb-3">
+      <label for="codeP" class="form-label">Code Postal :</label>
+      <input
+        type="text"
+        id="codeP"
+        [(ngModel)]="adresse.codePostal"
+        name="codeP"
+        class="form-control"
+        required
+      />
+      <div *ngIf="!adresse.codePostal && adresse.codePostal !== undefined" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Ville -->
+    <div class="form-group mb-3">
+      <label for="ville" class="form-label">Ville :</label>
+      <input
+        type="text"
+        id="ville"
+        [(ngModel)]="adresse.ville"
+        name="ville"
+        class="form-control"
+        required
+      />
+      <div *ngIf="!adresse.ville && adresse.ville !== undefined" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Pays -->
+    <div class="form-group mb-3">
+      <label for="commune" class="form-label">Commune :</label>
+      <input
+        type="text"
+        id="commune"
+        [(ngModel)]="adresse.commune"
+        name="commune"
+        class="form-control"
+        required
+      />
+      <div *ngIf="!adresse.Commune && adresse.Commune !== undefined" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+
+    <!-- Bouton de soumission -->
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="!adresse.nomVoie || !adresse.codePostal || !adresse.ville || !adresse.commune|| !adresse.numVoie"
+    >
+      Modifier
+    </button>
+  </form>
+</div>

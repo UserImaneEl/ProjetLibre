@@ -1,0 +1,130 @@
+/* Conteneur des laboratoires */
+.labo-container {
+  margin-left: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; 
+  padding: 40px 20px 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+  justify-items: center; 
+  align-items: flex-start;
+}
+
+/* Titre des laboratoires */
+.labs-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px; 
+  margin-top: 20px;
+  color: #333;
+  position: relative;
+  text-align: center;
+}
+
+/* Carte de chaque laboratoire */
+.labo-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;  
+  display: flex;
+  align-items: center;  
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);  
+  transition: transform 0.3s ease-in-out;
+  width: 100%; 
+  height: 88%;
+}
+
+.labo-card:hover {
+  transform: translateY(-5px); /* Légère élévation au survol */
+}
+
+/* Logo du laboratoire */
+.labo-logo {
+  margin-right: 20px;
+}
+
+.logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Informations du laboratoire */
+.labo-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labo-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.labo-nrc {
+  font-size: 1em;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+  .labo-card {
+    padding: 20px;  
+  }
+
+  .logo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .labo-name {
+    font-size: 1.2em;
+  }
+
+  .labo-nrc {
+    font-size: 0.9em;
+  }
+}
+
+.logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain; /* Essayez 'contain' si 'cover' pose problème */
+  border-radius: 12px;
+}
+
+/* Conteneur pour les boutons avec une disposition verticale */
+.buttons-container {
+  display: flex;
+  flex-direction: column; /* Aligne les boutons verticalement */
+  gap: 10px; /* Espace entre les boutons */
+  margin-top: 15px;
+  align-items: stretch; /* Les boutons prennent toute la largeur disponible */
+}
+
+/* Boutons Modifier et Supprimer */
+.buttons-container .btn {
+  width: 100%; /* Prend toute la largeur du conteneur */
+  font-size: 0.9em;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.buttons-container .btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.buttons-container .btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+

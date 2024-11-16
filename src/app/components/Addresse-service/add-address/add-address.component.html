@@ -1,0 +1,104 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Créer une nouvelle adresse</h2>
+
+  <!-- Message de succès ou d'erreur -->
+  <div
+    *ngIf="showMessage"
+    [ngClass]="{
+      'alert alert-success d-flex align-items-center': isSuccess,
+      'alert alert-danger d-flex align-items-center': !isSuccess
+    }"
+    role="alert"
+  >
+    <i
+      *ngIf="isSuccess"
+      class="bi bi-check-circle-fill me-2"
+      style="color: #28a745"
+    ></i>
+    <i
+      *ngIf="!isSuccess"
+      class="bi bi-exclamation-triangle-fill me-2"
+      style="color: #dc3545"
+    ></i>
+    <span>{{ message }}</span>
+  </div>
+
+  <!-- Formulaire d'ajout d'adresse -->
+  <form [formGroup]="labForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="form-group mb-3">
+      <label for="nomVoie" class="form-label">Nom de la voie:</label>
+      <input
+        id="nomVoie"
+        formControlName="nomVoie"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="labForm.controls['nomVoie'].invalid && labForm.controls['nomVoie'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="numVoie" class="form-label">Numéro de la voie:</label>
+      <input
+        id="numVoie"
+        formControlName="numVoie"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="labForm.controls['numVoie'].invalid && labForm.controls['numVoie'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="codePostal" class="form-label">Code Postal:</label>
+      <input
+        id="codePostal"
+        formControlName="codePostal"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="labForm.controls['codePostal'].invalid && labForm.controls['codePostal'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="ville" class="form-label">Ville:</label>
+      <input
+        id="ville"
+        formControlName="ville"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="labForm.controls['ville'].invalid && labForm.controls['ville'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="commune" class="form-label">Commune:</label>
+      <input
+        id="commune"
+        formControlName="commune"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="labForm.controls['commune'].invalid && labForm.controls['commune'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="labForm.invalid">
+      Créer
+    </button>
+    <hr>
+    <a type="button" class="btn btn-primary w-100" routerLink="/list-adress">Liste des adresses</a>
+  </form>
+</div>

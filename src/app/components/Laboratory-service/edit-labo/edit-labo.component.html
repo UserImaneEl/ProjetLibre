@@ -1,0 +1,101 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Modifier le laboratoire</h2>
+  <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <!-- Nom du laboratoire -->
+    <div class="form-group mb-3">
+      <label for="nom" class="form-label">Nom officiel du laboratoire:</label>
+      <input
+        type="text"
+        id="nom"
+        [(ngModel)]="labo.nom"
+        name="nom"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="!labo.nom && labo.nom !== undefined"
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- NRC -->
+    <div class="form-group mb-3">
+      <label for="nrc" class="form-label">Numéro de Registre de Commerce (NRC):</label>
+      <input
+        type="text"
+        id="nrc"
+        [(ngModel)]="labo.nrc"
+        name="nrc"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="!labo.nrc && labo.nrc !== undefined"
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="form-group mb-3">
+      <label for="logo" class="form-label">URL du logo du laboratoire:</label>
+      <input
+        type="text"
+        id="logo"
+        [(ngModel)]="labo.logo"
+        name="logo"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="!labo.logo && labo.logo !== undefined"
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Statut d'activité -->
+    <div class="form-group mb-3">
+      <label for="active" class="form-label">Laboratoire actif:</label>
+      <input
+        type="checkbox"
+        id="active"
+        [(ngModel)]="labo.active"
+        name="active"
+        class="form-check-input"
+      />
+    </div>
+
+    <!-- Date d'activation -->
+    <div class="form-group mb-3">
+      <label for="dateActivation" class="form-label">Date d'activation:</label>
+      <input
+        type="date"
+        id="dateActivation"
+        [(ngModel)]="labo.dateActivation"
+        name="dateActivation"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="!labo.dateActivation && labo.dateActivation !== undefined"
+        class="text-danger"
+      >
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="!labo.nom || !labo.nrc || !labo.logo || !labo.dateActivation"
+    >
+      Modifier
+    </button>
+  </form>
+</div>
