@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Laboratoire } from '../../models/laboratoire.model';
 import { LaboratoireService } from '../../Services/Laboratory-service';

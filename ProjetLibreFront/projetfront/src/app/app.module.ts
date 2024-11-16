@@ -7,7 +7,6 @@ import { AddLaboratoryComponent } from './components/add-laboratory/add-laborato
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LabosListComponent } from './components/labos-list/labos-list.component';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
