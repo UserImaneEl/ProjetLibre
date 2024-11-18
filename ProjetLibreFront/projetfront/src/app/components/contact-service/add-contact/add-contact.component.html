@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Créer un nouveau contact</h2>
+
+  <!-- Success/Error Message -->
+  <div
+    *ngIf="showMessage"
+    [ngClass]="{
+      'alert alert-success d-flex align-items-center': isSuccess,
+      'alert alert-danger d-flex align-items-center': !isSuccess
+    }"
+    role="alert"
+  >
+    <i
+      *ngIf="isSuccess"
+      class="bi bi-check-circle-fill me-2"
+      style="color: #28a745"
+    ></i>
+    <i
+      *ngIf="!isSuccess"
+      class="bi bi-exclamation-triangle-fill me-2"
+      style="color: #dc3545"
+    ></i>
+    <span>{{ message }}</span>
+  </div>
+
+  <!-- Form to add contact -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+
+    <div class="form-group mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        class="form-control"
+        required
+      />
+      <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched" class="text-danger">
+        Veuillez entrer un email valide.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="numTel" class="form-label">Numéro de téléphone:</label>
+      <input
+        id="numTel"
+        formControlName="numTel"
+        type="text"
+        class="form-control"
+        required
+      />
+      <div *ngIf="contactForm.controls['numTel'].invalid && contactForm.controls['numTel'].touched" class="text-danger">
+        Ce champ est requis et doit contenir 10 chiffres.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="fax" class="form-label">Fax:</label>
+      <input
+        id="fax"
+        formControlName="fax"
+        type="text"
+        class="form-control"
+      />
+      <div *ngIf="contactForm.controls['fax'].invalid && contactForm.controls['fax'].touched" class="text-danger">
+        Le fax doit contenir 10 chiffres (facultatif).
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="idLaboratoire" class="form-label">Laboratoire ID:</label>
+      <input
+        id="idLaboratoire"
+        formControlName="idLaboratoire"
+        type="number"
+        class="form-control"
+        required
+      />
+      <div *ngIf="contactForm.controls['idLaboratoire'].invalid && contactForm.controls['idLaboratoire'].touched" class="text-danger">
+        Ce champ est requis.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid">
+      Créer
+    </button>
+    <hr>
+    <a type="button" class="btn btn-primary w-100" routerLink="/list-contact">Liste des contacts</a>
+  </form>
+</div>

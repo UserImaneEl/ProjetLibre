@@ -7,12 +7,10 @@ import { AddLaboratoryComponent } from './components/add-laboratory/add-laborato
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LabosListComponent } from './components/labos-list/labos-list.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
 import { AddAnalyseComponent } from './components/add-analyse/add-analyse.component';
 import { ListAnalyseComponent } from './components/list-analyse/list-analyse.component';
+import { AddContactComponent } from './components/contact-service/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -23,17 +21,13 @@ import { ListAnalyseComponent } from './components/list-analyse/list-analyse.com
     LoginComponent,
     AddAnalyseComponent,
     ListAnalyseComponent,
+    AddContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, // Pour formGroup
     HttpClientModule,
-
-    MatFormFieldModule,
-    MatButtonModule,
-    MatCardModule,
-
     FormsModule,
   ],
   providers: [],
