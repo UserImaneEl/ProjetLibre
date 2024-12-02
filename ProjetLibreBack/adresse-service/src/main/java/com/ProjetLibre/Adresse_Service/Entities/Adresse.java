@@ -4,20 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 @Entity
 public class Adresse {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String numVoie;
     private String nomVoie;
     private Integer codePostal;
     private String ville;
     private String commune;
-
     public Long getId() {
         return id;
     }

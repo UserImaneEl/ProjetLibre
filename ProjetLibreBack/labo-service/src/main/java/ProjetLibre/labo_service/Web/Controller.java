@@ -10,33 +10,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("api/labos")
-
 public class Controller {
      @Autowired LaboratoireRepo laboratoireRepo;
-
      @Autowired
     LaboratoireService laboratoireService;
-
     @PostMapping("/addLabo")
     public ResponseEntity<String> addLabo(@RequestBody LaboDto laboDto) {
         try {
-
             laboratoireService.saveLabo(laboDto);
-
             return new ResponseEntity<>("Laboratoire ajouté avec succès", HttpStatus.CREATED);
         } catch (Exception e) {
             // Capture l'exception et renvoie un message d'erreur détaillé
             return new ResponseEntity<>("Erreur lors de l'ajout du laboratoire: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-  @PutMapping("/updateLabo/{id}")
+    @PutMapping("/updateLabo/{id}")
   public void update(@PathVariable(name="id")Long id,@RequestBody LaboDto laboDto){
       laboratoireService.update(laboDto,id);
   }
-
     @GetMapping("/labos")
     public ResponseEntity<List<LaboDto>> getLabos() {
         try {

@@ -1,5 +1,5 @@
 export interface analyse {
-  //id?: number | null;
+  id?: number | null;
   laboratoire: string;
   nom: string;
   description: string;

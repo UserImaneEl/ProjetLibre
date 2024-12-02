@@ -13,15 +13,12 @@ public class ContactLabo {
     private String email;
     private String numTel;
     private String fax;
-
     private Long IdLaboratoire;
-
     @Transient
     private Laboratoire laboratoire;
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }

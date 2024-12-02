@@ -2,7 +2,7 @@ package ProjetLibre.analyse_service.Daos;
 
 public class AnalyseDto {
 
-
+    private Long id;
     private String laboratoire;// ID du laboratoire, pas une relation directe
 
     // ID du laboratoire, pas une relation directe
@@ -46,5 +46,13 @@ public class AnalyseDto {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

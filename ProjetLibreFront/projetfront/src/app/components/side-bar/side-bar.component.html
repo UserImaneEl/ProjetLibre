@@ -1,0 +1,20 @@
+<div class="sidebar" [ngClass]="{ open: isOpen, closed: !isOpen }">
+  <div class="sidebar-header">
+    <img src="{{ logo }}" alt="Logo" class="logo" (click)="toggleSidebar()" />
+    <span *ngIf="isOpen" class="close-button" (click)="toggleSidebar()">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </span>
+  </div>
+  <ul class="sidebar-menu">
+    <li *ngFor="let item of menuItems" (click)="toggleSidebar()">
+      <fa-icon [icon]="item.icon" class="icon"></fa-icon>
+      <span class="text">{{ item.text }}</span>
+    </li>
+  </ul>
+  <div class="user-profile">
+    <img src="https://via.placeholder.com/40" alt="User" />
+    <span *ngIf="isOpen" class="user-info">
+      <p>{{ userInfo.nom }} {{ userInfo.prenom }}</p>
+    </span>
+  </div>
+</div>

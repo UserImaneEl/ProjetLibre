@@ -23,6 +23,7 @@ public class AnalyseMapper {
     public AnalyseDto fromAnalyseToDto(AnalyseTable a){
         Laboratoire l=laboratoireClient.getLaboById(a.getIdLaboratoire());
         AnalyseDto dto=new AnalyseDto();
+        dto.setId(a.getId());
         dto.setNom(a.getNom());
         dto.setDescription(a.getDescription());
         dto.setType(a.getType());

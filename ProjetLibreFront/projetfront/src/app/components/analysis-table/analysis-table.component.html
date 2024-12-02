@@ -1,0 +1,179 @@
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
+<!--<div><h2 class="labs-title">Gestion des analyses</h2></div>-->
+<div class="analysis-container">
+  <!-- Barre de recherche et actions -->
+  <div class="toolbar">
+    <div class="input-group input-group-sm">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-bar"
+        matInput
+        [matAutocomplete]="auto"
+        [formControl]="searchTerm"
+        placeholder=" Rechercher une analyse ..."
+        aria-label="Search"
+        aria-describedby="button-addon"
+      />
+      <button
+        class="btn"
+        type="button"
+        id="button-addon"
+        (click)="searchAnalyses()"
+      >
+        <i
+          class="fa fa-search"
+          aria-hidden="true"
+          style="font-size: 1.4rem; color: #555"
+        ></i>
+      </button>
+    </div>
+    <mat-autocomplete #auto="matAutocomplete" class="mat-autocomplete-panel">
+      <mat-option
+        *ngFor="let analyse of filteredOptions | async"
+        (click)="searchAnalyses()"
+        [value]="analyse.nom"
+        style="background-color: white"
+      >
+        {{ analyse.nom }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <div class="actions" style="display: flex; gap: 15px">
+      <!-- Conteneur des boutons alignés horizontalement -->
+      <div
+        style="
+          background-color: white;
+          border-radius: 15px;
+          width: 120px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <!-- Bouton Ajouter avec nouvelle icône -->
+        <button
+          class="icon-button add-button"
+          (click)="openAddAnalysisModal()"
+          style="
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+        >
+          <i class="fas fa-plus-circle" style="color: #ffcc84"></i> Ajouter
+        </button>
+      </div>
+
+      <div
+        style="
+          background-color: white;
+          border-radius: 15px;
+          width: 120px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <!-- Bouton Filtrer avec icône modifiée -->
+        <button
+          class="icon-button filter-button"
+          style="
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          (click)="toggleList()"
+        >
+          <i class="fas fa-filter" style="color: #ffcc84"></i> Filtrer
+        </button>
+      </div>
+      <ul *ngIf="isListVisible" class="filter-list">
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tableau des analyses -->
+  <div class="container">
+    <table class="analysis-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>Analyse</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Laboratoire</th>
+          <th>Actions</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let analysis of analyses">
+          <td><input type="checkbox" /></td>
+          <td>{{ analysis.nom }}</td>
+          <td>{{ analysis.type }}</td>
+          <td>{{ analysis.description }}</td>
+          <td>{{ analysis.laboratoire }}</td>
+          <!--<td [class]="analysis.status.toLowerCase()">{{ analysis.status }}</td>-->
+          <td>
+            <button
+              class="edit-button"
+              style="background: none; border: none; cursor: pointer"
+              (click)="openeditAnalysisModal(analysis!)"
+            >
+              <i class="fas fa-edit" style="color: #2ecc71"></i>
+            </button>
+            <button
+              class="delete-button"
+              style="background: none; border: none; cursor: pointer"
+            >
+              <i
+                class="fas fa-trash"
+                style="color: #f39c12; margin-left: 10px"
+                (click)="deleteAnalyse(analysis)"
+              ></i>
+            </button>
+          </td>
+
+          <td>
+            <button class="more-options">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-add-analyse
+  *ngIf="isModalOpen"
+  (close)="closeModal()"
+  (refresh)="fetchAnalyses()"
+></app-add-analyse>
+<app-edit-analyse
+  *ngIf="isModalEditOpen"
+  [analysis]="selectedAnalysis"
+  (close)="isModalEditOpen = false"
+  (refresh)="fetchAnalyses()"
+>
+</app-edit-analyse>

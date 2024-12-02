@@ -9,7 +9,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/UserImaneEl/ProjetLibre.git'
             }
         }
-
         // Build Backend (all backend services)
         stage('Build Backend') {
             steps {
@@ -51,7 +50,6 @@ pipeline {
                 }
             }
         }
-
         // Build Frontend (Angular)
         stage('Build Frontend') {
             steps {
@@ -61,7 +59,6 @@ pipeline {
                 }
             }
         }
-
         // Deploy with Docker Compose
         stage('Deploy with Docker Compose') {
             steps {
@@ -69,7 +66,6 @@ pipeline {
             }
         }
     }
-
     post {
         success {
             echo 'The build and deployment were successful!'

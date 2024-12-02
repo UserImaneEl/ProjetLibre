@@ -12,9 +12,8 @@ export class ListAnalyseComponent implements OnInit {
   analyses: analyse[] = [];
 
   constructor(
-    private analyseService: AnalyseService
-  ) //private router: Router // Injection du service de routage pour la navigation
-  {}
+    private analyseService: AnalyseService //private router: Router // Injection du service de routage pour la navigation
+  ) {}
 
   ngOnInit(): void {
     this.fetchAnalyses();

@@ -25,13 +25,20 @@ public class ContactLaboController {
     LaboRestClient laboRestClient;
 
     ContactLabo contactLabo;
-    @PostMapping("/add")
+    @PostMapping("/addContact")
     public ResponseEntity<ContactLabo> addContact(@RequestBody ContactLabo contactLabo){
         ContactLabo newContactLabo = contactLaboService.addContact(contactLabo);
         return ResponseEntity.status(HttpStatus.CREATED).body(newContactLabo);
     }
+ @DeleteMapping("/deleteContact")
+ public void deleteContact(){
 
-    @GetMapping
+ }
+    @PutMapping("/updateContact")
+    public void updateContact(){
+
+    }
+    @GetMapping("/listContacts")
     public List<ContactLabo> ContactLaboList(){
         return contactLaboRepository.findAll();
     }

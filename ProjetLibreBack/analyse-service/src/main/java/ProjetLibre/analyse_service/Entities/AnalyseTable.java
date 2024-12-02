@@ -9,24 +9,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity
-
 public class AnalyseTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     private Long IdLaboratoire;
     @Transient
-    private Laboratoire labo;// ID du laboratoire, pas une relation directe
-
-    // ID du laboratoire, pas une relation directe
-
-
+    private Laboratoire labo;
     private String nom;
     private String description;
     private String type;
-
     // Getters and Setters
     public Long getId() {
         return id;

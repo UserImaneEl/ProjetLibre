@@ -15,7 +15,7 @@ import java.util.List;
 @FeignClient(name= "LABO-SERVICE")
 public interface LaboratoireClient {
 
-   @GetMapping("/api/labos//getLaboById/{id}")
+   @GetMapping("/api/labos/getLaboById/{id}")
    Laboratoire getLaboById(@PathVariable("id") Long id);
    @GetMapping("/api/labos/getLaboByNom/{nom}")
    Laboratoire getLaboByNom(@PathVariable(name="nom") String nom);
